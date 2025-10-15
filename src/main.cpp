@@ -4,8 +4,6 @@
 
 int main() {
   // Flush after every std::cout / std:cerr
-
-
   while (true) {
     std::cout << std::unitbuf;
     std::cerr << std::unitbuf;
