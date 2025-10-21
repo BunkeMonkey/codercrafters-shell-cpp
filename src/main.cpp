@@ -1,12 +1,13 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <vector>
 #include <queue>
-
+#include "builtins.h"
 int main() {
   // Flush after every std::cout / std:cerr
   bool alive = true;
+
+
   while (alive) {
     std::cout << std::unitbuf;
     std::cerr << std::unitbuf;
@@ -24,24 +25,27 @@ int main() {
         input_tokens.push(input.substr(index,input.length()));
         break;
       }
-      //std::cout << "space index:" << space_index << std::endl << "start index" << index << std::endl;
+      std::cout << "space index:" << space_index << std::endl << "start index" << index << std::endl;
       input_tokens.push(input.substr(index,space_index - index));
-      //std::cout << "extracted substring: " << input.substr(index,space_index - index) << std::endl;
+      std::cout << "extracted substring: " << input.substr(index,space_index - index) << std::endl;
       index = space_index + 1;
 
    }
+
     /*
-    for(std::string token : input_tokens){
-      std::cout << "tokens:" << token << std::endl;
+    while(!input_tokens.empty()){
+      std::cout << "tokens:" << input_tokens.front() << std::endl;
+      input_tokens.pop();
     }
-*/
+    */
+    builtins.contains("test");
     auto command = input_tokens.front();
-    input_tokens.pop();
+    input_tokens.pop(); 
     if (command == "exit"){
       break;
     }
     if (command == "echo"){
-      for (int i = 1; i < input_tokens.size(); i++){
+      while (!input_tokens.empty()){
         std::cout << input_tokens.front() << " ";
         input_tokens.pop();
       }
@@ -49,12 +53,9 @@ int main() {
       continue;
 
     }
-  
-    
 
 
-
-    std::cout << input << ": command not found" << std::endl;
+    std::cout << input << ": command not found hasud" << std::endl;
   }
   return 0;
 
